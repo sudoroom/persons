@@ -61,7 +61,6 @@ tape('Browse /', function (test) {
       require('./webdriver')
         .url('http://localhost:' + port)
         .waitForExist('body')
-        .saveScreenshot('homepage.png')
         .then(function () {
           finish()
         })
