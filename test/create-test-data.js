@@ -3,8 +3,8 @@ var validateCollective = require('../validate/collective')
 var validatePerson = require('../validate/person')
 var writeJSONFile = require('../data/write-json-file')
 
-var collectivePath = require('../paths/collective')
-var personPath = require('../paths/person')
+var collectivePath = require('../data/paths/collective')
+var personPath = require('../data/paths/person')
 
 var collectiveID = 'testcollective'
 var personID = 'testperson'

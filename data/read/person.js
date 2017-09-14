@@ -1,4 +1,4 @@
-var collectivePath = require('../../paths/person')
+var collectivePath = require('../paths/person')
 var fs = require('fs')
 var parseJSON = require('json-parse-errback')
 var waterfall = require('run-waterfall')
