@@ -1,8 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 var parallel = require('run-parallel')
-var parseJSON = require('json-parse-errback')
-var waterfall = require('run-waterfall')
+var readJSONFile = require('./json-file')
 
 module.exports = function (settings, callback) {
   var directory = path.join(settings.directory, 'collectives')
@@ -13,10 +12,8 @@ module.exports = function (settings, callback) {
       else return callback(error)
     }
     parallel(entries.map(function (entry) {
-      return function (done) {
-        var file = path.join(directory, entry, 'collective.json')
-        waterfall([fs.readFile.bind(null, file), parseJSON], done)
-      }
+      var file = path.join(directory, entry, 'collective.json')
+      return readJSONFile.bind(null, file)
     }), callback)
   })
 }
