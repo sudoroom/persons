@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]{3,64}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "memberships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "collective": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "comrade",
+              "member",
+              "admin"
+            ]
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "about": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "email",
+    "keys",
+    "memberships",
+    "about"
+  ],
+  "additionalProperties": false
+}

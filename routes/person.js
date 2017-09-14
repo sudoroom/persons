@@ -30,7 +30,7 @@ ${head()}
   ${nav()}
   ${header()}
   <main>
-    <h2>${escape(data.person.name)}</h2>
+    <h2>${escape(data.person.id)}</h2>
     ${data.keys.length !== 0 && html`
     <section>
       <h3>E-Mail</h3>

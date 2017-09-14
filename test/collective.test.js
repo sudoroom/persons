@@ -12,10 +12,6 @@ tape('Browse /collectives/:id', function (test) {
         .getText('h2')
         .then(function (text) {
           test.equal(text, 'Test Collective', 'displays name')
-        })
-        .getText('.description')
-        .then(function (text) {
-          test.equal(text, 'a test collective', 'description')
           finish()
         })
         .catch(function (error) {

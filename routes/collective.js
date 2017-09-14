@@ -31,7 +31,6 @@ ${head()}
   ${header()}
   <main>
     <h2>${escape(data.collective.name)}</h2>
-    <p class=description>${escape(data.collective.description)}</p>
   </main>
   ${footer()}
 </body>
