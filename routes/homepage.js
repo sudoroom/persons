@@ -4,6 +4,7 @@ var readCollectives = require('../data/read/collectives')
 
 var escape = require('./escape')
 var footer = require('./partials/footer')
+var sendHTML = require('./send-html')
 var head = require('./partials/head')
 var header = require('./partials/header')
 var html = require('./html')
@@ -20,7 +21,7 @@ module.exports = function (request, response, settings) {
 
   function render (data) {
     doNotCache(response)
-    response.setHeader('Content-Type', 'text/html; charset=UTF-8')
+    sendHTML(response)
     response.end(html`
 <!doctype html>
 <html lang=EN>

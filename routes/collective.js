@@ -8,6 +8,7 @@ var head = require('./partials/head')
 var header = require('./partials/header')
 var html = require('./html')
 var nav = require('./partials/nav')
+var sendHTML = require('./send-html')
 
 module.exports = function (request, response, settings) {
   var collectiveID = request.parameters.collective
@@ -21,7 +22,7 @@ module.exports = function (request, response, settings) {
 
   function render (data) {
     doNotCache(response)
-    response.setHeader('Content-Type', 'text/html; charset=UTF-8')
+    sendHTML(response)
     response.end(html`
 <!doctype html>
 <html lang=EN>

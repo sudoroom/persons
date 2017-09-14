@@ -1,4 +1,5 @@
 var footer = require('./partials/footer')
+var sendHTML = require('./send-html')
 var head = require('./partials/head')
 var html = require('./html')
 var nav = require('./partials/nav')
@@ -6,7 +7,7 @@ var nav = require('./partials/nav')
 module.exports = function (response, error, settings) {
   settings.log.info(error)
   response.statusCode = 500
-  response.setHeader('Content-Type', 'text/html')
+  sendHTML(response)
   response.end(html`
 <!doctype html>
 <html lang=en>
