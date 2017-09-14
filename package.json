@@ -1,0 +1,47 @@
+{
+  "name": "sudo-persons",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "argon2": "^0.16.1",
+    "busboy": "^0.2.14",
+    "commonmark": "^0.28.1",
+    "do-not-cache": "^1.0.1",
+    "form-data": "^2.3.1",
+    "html-entities": "^1.2.1",
+    "http-hash": "^2.0.0",
+    "mkdirp": "^0.5.1",
+    "node-schedule": "^1.2.4",
+    "pino": "^4.7.1",
+    "pino-http": "^2.6.2",
+    "pump": "^1.0.2",
+    "run-waterfall": "^1.1.3",
+    "send": "^0.15.4",
+    "stripe": "^4.24.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "chromedriver": "^2.31.0",
+    "depcheck": "^0.6.7",
+    "husky": "^0.14.3",
+    "istanbul": "^0.4.5",
+    "licensee": "^4.5.0",
+    "lint-staged": "^4.0.4",
+    "rimraf": "^2.6.1",
+    "simple-concat": "^1.0.0",
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
+  },
+  "scripts": {
+    "coverage": "NODE_ENV=test istanbul cover -- tape test/*.test.js",
+    "depcheck": "depcheck --ignores husky,chromedriver,lint-staged",
+    "postcoverage": "istanbul check --statements 100 --functions 100 --branches 100 --lines 100",
+    "test": "NODE_ENV=test tape test/*.test.js",
+    "lint": "standard",
+    "precommit": "lint-staged",
+    "licenses": "licensee --errors-only"
+  },
+  "lint-staged": {
+    "*.js": "standard"
+  }
+}
