@@ -1,3 +1,5 @@
+// Write JSON to a file, creating the containing directory if necessary.
+
 var path = require('path')
 var fs = require('fs')
 var series = require('run-series')

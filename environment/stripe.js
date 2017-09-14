@@ -1,3 +1,5 @@
+// Load Stripe keys from the environment.
+
 module.exports = {
   application: process.env.STRIPE_APPLICATION,
   private: process.env.STRIPE_PRIVATE_KEY,

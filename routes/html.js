@@ -1,4 +1,5 @@
-// Tag function for tag templates literals constructing HTML.
+// Tag function for tag template literals constructing HTML.
+//
 // Adds a few semantic niceties:
 //
 // 1.  Falsey values in expressions don't produce output.
