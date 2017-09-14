@@ -10,7 +10,12 @@ var header = require('./partials/header')
 var html = require('./html')
 var nav = require('./partials/nav')
 
+// Export an HTTP request handler.
 module.exports = function (request, response, settings) {
+  // This route function's structure is typical:
+  //
+  // 1.  Load data, creating a `data` object.
+  // 2   Call `render(data)` to write headers and HTML.
   readCollectives(settings, function (error, collectives) {
     /* istanbul ignore if */
     if (error) return internalError(response, error, settings)
