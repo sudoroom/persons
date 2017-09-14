@@ -1,0 +1,6 @@
+collectives
+  {UUID}
+    collective.json
+persons
+  {UUID}
+    person.json
