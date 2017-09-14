@@ -20,6 +20,7 @@ module.exports = function (request, response, settings) {
   })
 
   function render (data) {
+    var person = data.person
     doNotCache(response)
     response.setHeader('Content-Type', 'text/html; charset=UTF-8')
     response.end(html`
@@ -30,22 +31,22 @@ ${head()}
   ${nav()}
   ${header()}
   <main>
-    <h2>${escape(data.person.id)}</h2>
-    ${data.keys.length !== 0 && html`
+    <h2>${escape(person.id)}</h2>
     <section>
       <h3>E-Mail</h3>
       <p>
-        <a href="mailto:${escape(data.email)}">
-          ${escape(data.email)}
+        <a class=email href="mailto:${escape(person.email)}">
+          ${escape(person.email)}
         </a>
       </p>
     </section>
-    <section>
+    ${person.keys.length !== 0 && html`
+    <section class=keys>
       <h3>Keys</h3>
       <dl>
-        ${data.keys.map(function (key) {
+        ${person.keys.map(function (key) {
           return html`
-            <dt>${escape(key.type)}</dt>
+            <dt class=type>${escape(key.type)}</dt>
             <ddt>${escape(key.key)}</dd>
           `
         })}

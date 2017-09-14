@@ -6,6 +6,7 @@ var routes = module.exports = require('http-hash')()
 
 routes.set('/', require('./homepage'))
 routes.set('/collectives/:collective', require('./collective'))
+routes.set('/persons/:person', require('./person'))
 
 staticFile('normalize.css')
 staticFile('styles.css')
