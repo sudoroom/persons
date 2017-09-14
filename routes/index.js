@@ -5,6 +5,7 @@ var send = require('send')
 var routes = module.exports = require('http-hash')()
 
 routes.set('/', require('./homepage'))
+routes.set('/collectives/:collective', require('./collective'))
 
 staticFile('normalize.css')
 staticFile('styles.css')

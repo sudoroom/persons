@@ -4,9 +4,9 @@ var routes = require('./routes')
 var stripe = require('stripe')
 var url = require('url')
 
-module.exports = function makeRequestHandler (service, log) {
+module.exports = function makeRequestHandler (settings, log) {
   var pino = pinoHTTP({logger: log})
-  service.stripe.api = stripe(service.stripe.private)
+  settings.stripe.api = stripe(settings.stripe.private)
   return function requestHandler (request, response) {
     pino(request, response)
     var parsed = url.parse(request.url, true)
@@ -15,9 +15,9 @@ module.exports = function makeRequestHandler (service, log) {
     var route = routes.get(parsed.pathname)
     if (route.handler) {
       request.parameters = route.params
-      route.handler(request, response, service)
+      route.handler(request, response, settings)
     } else {
-      notFound(service, response)
+      notFound(settings, response)
     }
   }
 }

@@ -15,15 +15,15 @@ module.exports = function testServer () {
     callback = arguments[0]
   }
   fs.mkdtemp('/tmp/', function withDirectory (ignore, directory) {
-    var configuration = {
+    var settings = {
       directory: directory,
       stripe: require('../environment/stripe')
     }
     var log = pino({}, fs.createWriteStream('test-server.log'))
-    configuration.log = log
-    var server = http.createServer(makeHandler(configuration, log))
+    settings.log = log
+    var server = http.createServer(makeHandler(settings, log))
     server.listen(port, function onListening () {
-      callback(this.address().port, configuration, function done () {
+      callback(this.address().port, settings, function done () {
         server.close(function () {
           rimraf.sync(directory)
         })

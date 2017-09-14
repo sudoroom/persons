@@ -1,5 +1,5 @@
 var internalError = require('./internal-error')
-var readCollectives = require('../data/read/collectives')
+var readCollective = require('../data/read/collective')
 
 var escape = require('./escape')
 var footer = require('./partials/footer')
@@ -9,10 +9,11 @@ var html = require('./html')
 var nav = require('./partials/nav')
 
 module.exports = function (request, response, settings) {
-  readCollectives(settings, function (error, collectives) {
+  var collectiveID = request.parameters.collective
+  readCollective(settings, collectiveID, function (error, collective) {
     /* istanbul ignore if */
     if (error) return internalError(response, error, settings)
-    var data = {collectives: collectives}
+    var data = {collective: collective}
     settings.log.info(data, 'data')
     render(data)
   })
@@ -27,14 +28,7 @@ ${head()}
   ${nav()}
   ${header()}
   <main>
-    <h1>Sudo Persons</h1>
-    ${data.collectives.map(function (collective) {
-      return html`
-        <section>
-          <h2>${escape(collective.name)}</h2>
-        </section>
-      `
-    })}
+    <h2>${escape(data.collective.name)}</h2>
   </main>
   ${footer()}
 </body>
