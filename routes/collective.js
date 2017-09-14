@@ -1,3 +1,4 @@
+var doNotCache = require('do-not-cache')
 var internalError = require('./internal-error')
 var readCollective = require('../data/read/collective')
 
@@ -19,6 +20,7 @@ module.exports = function (request, response, settings) {
   })
 
   function render (data) {
+    doNotCache(response)
     response.setHeader('Content-Type', 'text/html; charset=UTF-8')
     response.end(html`
 <!doctype html>
