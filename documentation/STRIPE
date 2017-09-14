@@ -1,0 +1,13 @@
+Token
+... creates a Customer
+... which has Subscription
+... to a Plan
+
+Plan:
+  amount: Integer
+  currency: usd
+  interval: month
+  interval_count: 1
+  name: String
+
+Optional proration on plan update
