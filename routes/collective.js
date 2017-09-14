@@ -2,7 +2,7 @@ var doNotCache = require('do-not-cache')
 var internalError = require('./internal-error')
 var readCollective = require('../data/read/collective')
 
-var escape = require('./escape')
+var escaped = require('./escaped')
 var footer = require('./partials/footer')
 var head = require('./partials/head')
 var header = require('./partials/header')
@@ -31,7 +31,7 @@ ${head()}
   ${nav()}
   ${header()}
   <main>
-    <h2>${escape(data.collective.name)}</h2>
+    <h2>${escaped(data.collective.name)}</h2>
   </main>
   ${footer()}
 </body>

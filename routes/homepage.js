@@ -2,7 +2,7 @@ var doNotCache = require('do-not-cache')
 var internalError = require('./internal-error')
 var readCollectives = require('../data/read/collectives')
 
-var escape = require('./escape')
+var escaped = require('./escaped')
 var footer = require('./partials/footer')
 var sendHTML = require('./send-html')
 var head = require('./partials/head')
@@ -34,7 +34,7 @@ ${head()}
     ${data.collectives.map(function (collective) {
       return html`
         <section>
-          <h2>${escape(collective.name)}</h2>
+          <h2>${escaped(collective.name)}</h2>
         </section>
       `
     })}

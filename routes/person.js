@@ -2,7 +2,7 @@ var doNotCache = require('do-not-cache')
 var internalError = require('./internal-error')
 var readPerson = require('../data/read/person')
 
-var escape = require('./escape')
+var escaped = require('./escaped')
 var footer = require('./partials/footer')
 var head = require('./partials/head')
 var header = require('./partials/header')
@@ -32,12 +32,12 @@ ${head()}
   ${nav()}
   ${header()}
   <main>
-    <h2>${escape(person.id)}</h2>
+    <h2>${escaped(person.id)}</h2>
     <section>
       <h3>E-Mail</h3>
       <p>
-        <a class=email href="mailto:${escape(person.email)}">
-          ${escape(person.email)}
+        <a class=email href="mailto:${escaped(person.email)}">
+          ${escaped(person.email)}
         </a>
       </p>
     </section>
@@ -47,8 +47,8 @@ ${head()}
       <dl>
         ${person.keys.map(function (key) {
           return html`
-            <dt class=type>${escape(key.type)}</dt>
-            <ddt>${escape(key.key)}</dd>
+            <dt class=type>${escaped(key.type)}</dt>
+            <ddt>${escaped(key.key)}</dd>
           `
         })}
       </dt>

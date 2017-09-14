@@ -1,4 +1,4 @@
-var escape = require('../escape')
+var escaped = require('../escaped')
 var html = require('../html')
 
 module.exports = function (subtitle) {
@@ -6,7 +6,7 @@ module.exports = function (subtitle) {
 <head>
   <meta charset=UTF-8>
   <meta name=viewport content="width=725">
-  <title>Sudo Persons${subtitle && escape(' / ' + subtitle)}</title>
+  <title>Sudo Persons${subtitle && escaped(' / ' + subtitle)}</title>
   <link rel=stylesheet href=/normalize.css>
   <link rel=stylesheet href=/styles.css>
 </head>
