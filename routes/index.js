@@ -25,6 +25,6 @@ routes.set('/robots.txt', function (request, response) {
 })
 
 var internalError = require('./internal-error')
-routes.set('/500', function (request, response) {
-  internalError(response, new Error('Error for test purposes.'))
+routes.set('/500', function (request, response, settings) {
+  internalError(response, new Error('Error for test purposes.'), settings)
 })
