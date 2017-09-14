@@ -1,8 +1,6 @@
 var http = require('http')
 var makeHandler = require('./')
 var pino = require('pino')
-var schedule = require('node-schedule')
-var billMembers = require('./jobs/bill-members')
 
 var DIRECTORY = process.env.DIRECTORY
 var PORT = process.env.PORT || 8080
@@ -34,14 +32,6 @@ process
 server.listen(PORT, function onListening () {
   var boundPort = this.address().port
   log.info({event: 'listening', port: boundPort})
-})
-
-var jobs = [billMembers]
-jobs.forEach(function (job) {
-  job(service, function () { })
-  schedule.scheduleJob('0 * * * *', function () {
-    job(service, function () { /* pass */ })
-  })
 })
 
 function logSignalAndShutDown () {
