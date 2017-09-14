@@ -20,7 +20,8 @@ module.exports = function (settings, callback) {
         function (done) {
           fs.writeFile(file, JSON.stringify({
             id: collectiveID,
-            name: 'Test Collective'
+            name: 'Test Collective',
+            description: 'a test collective'
           }), done)
         }
       ], done)
